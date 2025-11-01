@@ -1,0 +1,1 @@
+sudo find /var/ossec/etc -maxdepth 2 -type f -name '*.conf' -exec sed -n 's:.*<location>[[:space:]]*\(.*\)[[:space:]]*</location>.*:\1:p' {} + | awk '{gsub(/^[ \t]+|[ \t]+$/,"");k=$0;sub(".*/","",k);print tolower(k)"\t"$0}' | sort -f | cut -f2 | nl -s'. '
