@@ -3,3 +3,5 @@ MDAyIFdpbjEwLVBybyAxOTIuMTY4LjU2LjEwMiA1YjM0ZTc1MWMyMjU4YTEwYTRiYWY1YTBjYzg4ZGFm
 curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo apt-key add -
 echo "deb https://packages.wazuh.com/4.14/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
 sudo apt update
+
+curl -O https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-dashboard/wazuh-dashboard_4.14.0-1_amd64.deb
