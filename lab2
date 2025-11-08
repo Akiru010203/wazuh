@@ -1,1 +1,5 @@
 MDAyIFdpbjEwLVBybyAxOTIuMTY4LjU2LjEwMiA1YjM0ZTc1MWMyMjU4YTEwYTRiYWY1YTBjYzg4ZGFmMDE2ZmMxMDUyMDM5YzZlNjJhOWNjYTJlY2FmMGRmZTY1
+
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo apt-key add -
+echo "deb https://packages.wazuh.com/4.14/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
+sudo apt update
