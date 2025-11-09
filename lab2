@@ -5,3 +5,9 @@ echo "deb https://packages.wazuh.com/4.14/apt/ stable main" | sudo tee /etc/apt/
 sudo apt update
 
 curl -O https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-dashboard/wazuh-dashboard_4.14.0-1_amd64.deb
+
+sudo tar czf /root/wazuh-backup-$(date +%F).tgz \
+  /var/ossec/etc \
+  /var/ossec/api/configuration/api.yaml \
+  /usr/share/wazuh-dashboard/data/wazuh/config \
+  /etc/wazuh-indexer
