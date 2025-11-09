@@ -11,3 +11,21 @@ sudo tar czf /root/wazuh-backup-$(date +%F).tgz \
   /var/ossec/api/configuration/api.yaml \
   /usr/share/wazuh-dashboard/data/wazuh/config \
   /etc/wazuh-indexer
+
+# khoá GPG kiểu mới (tránh apt-key deprecated)
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH \
+  | sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
+
+echo 'deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.13/apt/ stable main' \
+  | sudo tee /etc/apt/sources.list.d/wazuh.list
+
+sudo apt update
+
+# xem các version có sẵn
+apt-cache policy wazuh-manager wazuh-dashboard wazuh-indexer
+
+# hạ cấp (chú ý tham số --allow-downgrades)
+sudo apt install --allow-downgrades -y \
+  wazuh-manager=4.13.3-1 \
+  wazuh-dashboard=4.13.1-1 \
+  wazuh-indexer=4.13.1-1
