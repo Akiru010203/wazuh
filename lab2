@@ -1,11 +1,10 @@
 MDAxIFdpbmRvd3MxMFBybyAxOTIuMTY4LjU2LjEwMiAwYWFjZTc4ODc5NTQ0OWM1YmNmZWIxNGNiNWZhMzI0ODI3YmU5MTAyMmI3MDJjMWQ0NTM4NDI0MmVlZjE4OWYx
 # Security 4688
-zgrep -a '"event.channel":"Security".*"event_id":"4688"' /var/ossec/logs/archives/archives.json* | tail -n 5
+grep -a '"event.channel":"Security".*"event_id":"4688"' /var/ossec/logs/alerts/alerts.json | tail -n 5
 
-# Sysmon 1 hoặc 3
-zgrep -a '"event.channel":"Microsoft-Windows-Sysmon/Operational".*"event_id":"1"' /var/ossec/logs/archives/archives.json* | tail -n 5
-zgrep -a '"event.channel":"Microsoft-Windows-Sysmon/Operational".*"event_id":"3"' /var/ossec/logs/archives/archives.json* | tail -n 5
+# Sysmon 1
+grep -a '"Microsoft-Windows-Sysmon/Operational".*"event_id":"1"' /var/ossec/logs/alerts/alerts.json | tail -n 5
 
-zgrep -a '"event.channel":"Security".*"4688"' /var/ossec/logs/alerts/alerts.json* | tail -n 5
-zgrep -a '"Microsoft-Windows-Sysmon/Operational".*"\"event_id\":\"1\"' /var/ossec/logs/alerts/alerts.json* | tail -n 5
-zgrep -a '"Microsoft-Windows-Sysmon/Operational".*"\"event_id\":\"3\"' /var/ossec/logs/alerts/alerts.json* | tail -n 5
+# Sysmon 3
+grep -a '"Microsoft-Windows-Sysmon/Operational".*"event_id":"3"' /var/ossec/logs/alerts/alerts.json | tail -n 5
+
