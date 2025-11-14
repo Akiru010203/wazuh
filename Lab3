@@ -14,3 +14,29 @@ sudo systemctl restart auditd
 
 sudo cat /etc/passwd > /dev/null
 sudo tail -f /var/log/audit/audit.log
+
+---------------------------------
+
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" \
+ | sudo tee /etc/apt/sources.list.d/wazuh.list
+
+sudo apt update
+
+sudo apt install wazuh-agent -y
+
+sudo nano /var/ossec/etc/ossec.conf
+
+<client>
+  <server>
+    <address>WAZUH_MANAGER_IP</address>
+    <port>1514</port>
+    <protocol>tcp</protocol>
+  </server>
+</client>
+
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+sudo systemctl status wazuh-agent
