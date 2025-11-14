@@ -41,17 +41,18 @@ sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
 sudo systemctl status wazuh-agent
 
-<group name="auditd,">
-  <!-- Alert chung cho mọi event Auditd -->
+<group name="local,auditd,">
+  <!-- Rule chung cho mọi event từ /var/log/audit/audit.log -->
   <rule id="100100" level="5">
-    <if_group>auditd</if_group>
-    <description>Generic Auditd event</description>
+    <location>/var/log/audit/audit.log</location>
+    <description>Auditd generic event (local)</description>
   </rule>
 
-  <!-- Alert khi có truy cập /etc/shadow -->
+  <!-- Rule mạnh hơn: truy cập /etc/shadow -->
   <rule id="100101" level="7">
-    <if_group>auditd</if_group>
-    <match>/etc/shadow</match>
+    <location>/var/log/audit/audit.log</location>
+    <match>/etc\/shadow/</match>
     <description>Auditd: access to /etc/shadow</description>
   </rule>
 </group>
+
