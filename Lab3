@@ -1,1 +1,7 @@
+sudo apt update
+sudo apt install auditd audispd-plugins -y
 
+sudo systemctl status auditd
+sudo systemctl enable --now auditd
+
+-------------------------------
