@@ -5,3 +5,9 @@ sudo systemctl status auditd
 sudo systemctl enable --now auditd
 
 -------------------------------
+
+sudo cp audit.rules /etc/audit/rules.d/hardening.rules
+sudo augenrules --load
+sudo systemctl restart auditd
+
+---------------------------------
