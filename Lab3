@@ -11,3 +11,6 @@ sudo augenrules --load
 sudo systemctl restart auditd
 
 ---------------------------------
+
+sudo cat /etc/passwd > /dev/null
+sudo tail -f /var/log/audit/audit.log
